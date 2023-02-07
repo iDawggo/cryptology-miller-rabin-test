@@ -1,0 +1,268 @@
+﻿<Window x:Class="Primality.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Primality"
+        mc:Ignorable="d"
+        Title="Primality" 
+        Height="420" Width="920"
+        WindowStyle = "None"
+        ResizeMode = "NoResize"
+        Background = "Transparent"
+        AllowsTransparency = "True">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="25"/>
+    </WindowChrome.WindowChrome>
+    
+    <Border Background="#272537" CornerRadius="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Background="#161422" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="2">
+                <StackPanel WindowChrome.IsHitTestVisibleInChrome="True"
+                            Height="25"
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                    
+                    <Button x:Name="minimizeButton" 
+                            Width="19" 
+                            Margin="3" 
+                            Content="‒"
+                            FontSize="20"
+                            BorderBrush="Transparent" 
+                            Foreground="White">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="TextElement.FontFamily" Value="Cachet Std Book"/>
+                                <Setter Property="Background" Value="#F1AD1D"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#D3940D"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="19" Height="19"
+                                        CornerRadius="3"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    
+                    <Button x:Name="closeButton" 
+                            Width="19" 
+                            Margin="3"
+                            Content="🞪"
+                            FontSize="16"
+                            BorderBrush="Transparent" 
+                            Foreground="White">
+                        
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="TextElement.FontFamily" Value="Cachet Std Book"/>
+                                <Setter Property="Background" Value="#FF5454"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF1F1F"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="19" Height="19"
+                                        CornerRadius="3"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <TextBlock Text="Primality Test"
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Center" 
+                       Margin="10,0,0,0"
+                       Foreground="White"
+                       FontSize="16"
+                       FontWeight="Bold" 
+                       FontFamily="Cachet Std Book"
+                       Grid.Column="0"
+                       Grid.Row="0"/>
+
+            <TextBlock Text="Candidate Prime Number:"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       Foreground="White"
+                       FontSize="25"
+                       FontWeight="Bold" 
+                       FontFamily="Cachet Std Book"
+                       Grid.Column="0"
+                       Grid.Row="1"/>
+
+            <TextBlock Text="Security Parameter Number:"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       Foreground="White"
+                       FontSize="25"
+                       FontWeight="Bold" 
+                       FontFamily="Cachet Std Book"
+                       Grid.Column="1"
+                       Grid.Row="1"/>
+
+            <Border CornerRadius="10"
+                    Background="#353340"
+                    Width="400"
+                    Height="150"
+                    Grid.Row="2"
+                    Grid.Column="0">
+                
+                <Grid>
+                    <TextBox x:Name="inCandidate" 
+                             Width="400" 
+                             Height="150"
+                             VerticalContentAlignment="Center"
+                             HorizontalContentAlignment="Center"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             FontSize="25"
+                             FontFamily="Cachet Std Book"
+                             BorderThickness="0"
+                             Background="Transparent"
+                             Foreground="#CFCFCF"
+                             CaretBrush="#CFCFCF"
+                             TextWrapping="Wrap" 
+                             TextChanged="inCandidate_TextChanged"/>
+                </Grid>
+            </Border>
+
+            <Border CornerRadius="10"
+                    Background="#353340"
+                    Width="400"
+                    Height="150"
+                    Grid.Row="2"
+                    Grid.Column="1">
+                
+                <Grid>
+                    <TextBox x:Name="inSecurity" 
+                             Width="400" 
+                             Height="150"
+                             VerticalContentAlignment="Center"
+                             HorizontalContentAlignment="Center"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             FontSize="25"
+                             FontFamily="Cachet Std Book"
+                             BorderThickness="0"
+                             Background="Transparent"
+                             Foreground="#CFCFCF"
+                             CaretBrush="#CFCFCF"
+                             TextWrapping="Wrap" 
+                             TextChanged="inSecurity_TextChanged"/>
+                </Grid>
+            </Border>
+
+            <TextBlock Text="What is P?"
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Top" 
+                       Margin="20,20,0,0"
+                       Foreground="White"
+                       FontSize="25"
+                       FontWeight="Bold" 
+                       FontFamily="Cachet Std Book"
+                       Grid.Column="1"
+                       Grid.Row="3"/>
+
+            <TextBlock x:Name="outMsg" 
+                       Text=""
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Top" 
+                       Margin="20,55,0,0"
+                       Foreground="White"
+                       FontSize="25"
+                       FontWeight="Bold" 
+                       FontFamily="Cachet Std Book"
+                       Grid.Column="1"
+                       Grid.Row="3"
+                       TextWrapping="Wrap" 
+                       FontStyle="Italic"/>
+
+            <TextBlock x:Name="outErrors" 
+                       Text=""
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Bottom" 
+                       Margin="20,0,0,20"
+                       Foreground="Red"
+                       FontSize="20"
+                       FontWeight="Bold" 
+                       FontFamily="Cachet Std Book"
+                       Grid.Column="1"
+                       Grid.Row="3"
+                       TextWrapping="Wrap"/>
+
+            <Button x:Name="calculate"
+                    Content="Test Primality"
+                    Click="calculate_Click"
+                    Foreground="White"
+                    FontSize="50"
+                    FontWeight="Medium"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    VerticalContentAlignment="Center"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Cachet Std Book"/>
+                        <Setter Property="Background" Value="#FE6584"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF4C70"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="400" Height="150"
+                                CornerRadius="10"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+    </Border>
+</Window>
